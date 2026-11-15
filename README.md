@@ -17,6 +17,8 @@ This repository holds the images and music used by [Eu's Treasure Trove](https:/
 | `rin.webp` | 角色「鈴」卡片圖 · Rin character card |
 | `bgm.mp3` | 網站背景音樂 · Background music |
 | `avatar.webp` | 作者頭像 · Author avatar |
+| `Cubic_11.woff2` | 網站字型 · Site font |
+| `Cubic11_OFL.txt` | 字型授權條款 · Font license |
 
 ## 音樂來源 Music Credits
 
@@ -24,6 +26,10 @@ This repository holds the images and music used by [Eu's Treasure Trove](https:/
 
 - `bgm.mp3`：[Lofi Chill Happy Cute Cartoon Beat](https://pixabay.com/music/beats-lofi-chill-happy-cute-cartoon-beat-384029/) by absounds
 
+## 字型來源 Font Credits
+
+- `Cubic_11.woff2`：[俐方體 11 號 Cubic 11](https://github.com/ACh-K/Cubic-11)，依 SIL Open Font License 1.1 授權，詳見 `Cubic11_OFL.txt`。 Licensed under the SIL Open Font License 1.1, see `Cubic11_OFL.txt`.
+
 ## 著作權 Copyright
 
-作品、角色、世界觀與圖片的著作權皆屬 EuDDDDD 所有（上列音樂除外）。圖片由 AI 生成。 All works, characters, settings and images © EuDDDDD (excluding the music credited above). Images are AI-generated.
+作品、角色、世界觀與圖片的著作權皆屬 EuDDDDD 所有（上列音樂與字型除外）。圖片由 AI 生成。 All works, characters, settings and images © EuDDDDD (excluding the music and font credited above). Images are AI-generated.
