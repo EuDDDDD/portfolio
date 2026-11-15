@@ -19,6 +19,7 @@ This repository holds the images, music and font used by [Eu's Treasure Trove](h
 | `me_*.webp` | 網站底部散步的像素小人 · Walking pixel mascot |
 | `stk_*.webp` | 標題旁的貼紙 · Title stickers |
 | `ic_*.png` | 網站圖示與背景漂浮小物 · Site icons & floating decorations |
+| `eu.css`, `eu.js` | 網站共用樣式與程式（背景、音樂、小人、語言切換） · Shared site style & script |
 | `bgm.mp3` | 網站背景音樂 · Background music |
 | `Cubic_11.woff2` | 網站字型 · Site font |
 | `Cubic11_OFL.txt` | 字型授權條款 · Font license |
