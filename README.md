@@ -1,4 +1,4 @@
-# Eu's Treasure Trove · Eu 的百寶屋
+# Eu's Treasure Trove · Eu的百寶屋
 
 © EuDDDDD. All rights reserved.
 
