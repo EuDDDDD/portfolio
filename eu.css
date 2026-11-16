@@ -141,6 +141,7 @@ html.eu-seen .eu .ttl .dd{animation:eu-bob 3.2s ease-in-out infinite}
 .eu .sl h2{margin:8px 0 2px}
 .eu .sl p{margin:4px 0 0}
 .eu .sl em{font-style:normal}
+.eu .sl.wide{grid-template-columns:minmax(0,2.6fr) minmax(0,1fr)}
 .eu .ctl{display:flex;justify-content:center;align-items:center;gap:10px;margin-top:12px}
 .eu .ctl button{font-family:inherit;cursor:pointer;color:var(--ink)}
 .eu .cp,.eu .cn{width:34px;height:34px;border:2.5px solid var(--line);border-radius:50%;background:var(--yel);box-shadow:2px 2px 0 var(--line);font-size:16px;line-height:1;padding:0}
@@ -173,6 +174,7 @@ html.eu-en .eu .crm dl{grid-template-columns:7em minmax(0,1fr)}
 .eu .back:hover{transform:none;left:-2px}
 @media (max-width:600px){
  .eu .sl{grid-template-columns:minmax(0,1fr);gap:8px;align-items:start}
+ .eu .sl.wide{grid-template-columns:minmax(0,1fr)}
  .eu .sl h2{margin-top:4px;font-size:21px}
  .eu .ops{gap:8px}
  .eu .op{padding:8px 9px;font-size:12.5px;line-height:1.7}.eu .op b{font-size:15px}.eu .op kbd{padding:0 2px}
