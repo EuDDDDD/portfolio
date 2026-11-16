@@ -159,7 +159,7 @@ html.eu-seen .eu .ttl .dd{animation:eu-bob 3.2s ease-in-out infinite}
 @media (max-width:600px){.eu-wk{width:82px;height:100px}}
 #eu-rin{width:95px;height:135px}
 @media (max-width:600px){#eu-rin{width:73px;height:104px}}
-#eu-rin.held .fr{transform-origin:63% 15%}
+#eu-rin.held .fr{transform-origin:64% 7%}
 .eu-wk.held{cursor:grabbing}
 .eu-wk.held .fr{transform-origin:50% 8%;animation:eu-dangle 1.1s ease-in-out infinite}
 @keyframes eu-dangle{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}}

@@ -147,7 +147,7 @@
  mkWalker({id:'eu-me',pre:'me_',heart:true,ax:.5,ay:.06,spd:1,
   lines:{zh:['嗨～歡迎光臨！','慢慢逛喔～','要不要玩章魚燒？','今天也辛苦了～','我在散步～','AI 聊天真的很好玩！'],en:['Hi, welcome!','Take your time~','Try Takoyaki House?','You did great today~','Just taking a stroll~','AI chat is so much fun!']},
   hold:{zh:['哇啊啊！','放我下來～','好、好高喔！','咦咦咦？！'],en:['Whoa!','Put me down~','So high!','Eek?!']}});
- mkWalker({id:'eu-rin',pre:'rin_',heart:false,ax:.63,ay:.15,spd:1.12,
+ mkWalker({id:'eu-rin',pre:'rin_',heart:false,ax:.64,ay:.07,spd:1.12,
   lines:{zh:['你的願望本大神收下了！','又來啦？嘿嘿','別忘了本大神喔','快來找本大神許願～','神明也是會無聊的嘛','本大神才沒有在等你'],en:['Your wish? Received!','Back again? Heh','Don\'t forget me','Come make a wish~','Even gods get bored','I wasn\'t waiting for you or anything']},
   hold:{zh:['喂！放本大神下來！','本大神可是神耶！','……不爽。','你當本大神是貓喔？'],en:['Hey! Put me down!','I\'m a god, you know!','...Hmph.','Am I a cat to you?']}});
  var a=new Audio();a.loop=true;a.volume=0.2;
