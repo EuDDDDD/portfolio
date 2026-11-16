@@ -20,7 +20,7 @@ This repository holds the images, music and font used by [Eu's Treasure Trove](h
 | `stk_*.webp` | 標題旁的貼紙 · Title stickers |
 | `ic_*.png` | 網站圖示與背景漂浮小物 · Site icons & floating decorations |
 | `eu.css`, `eu.js` | 網站共用樣式與程式（背景、音樂、小人、語言切換） · Shared site style & script |
-| `bgm.mp3` | 網站背景音樂 · Background music |
+| `bgm.dat` | 網站背景音樂（已編碼，僅供網站播放） · Background music (encoded, for on-site playback only) |
 | `Cubic_11.woff2` | 網站字型 · Site font |
 | `Cubic11_OFL.txt` | 字型授權條款 · Font license |
 
@@ -28,7 +28,7 @@ This repository holds the images, music and font used by [Eu's Treasure Trove](h
 
 以下音樂來自 Pixabay，依 [Pixabay Content License](https://pixabay.com/service/license-summary/) 使用，著作權屬原作者所有。 The following music is from Pixabay, used under the Pixabay Content License. Copyright belongs to the original creator.
 
-- `bgm.mp3`：[Lofi Chill Happy Cute Cartoon Beat](https://pixabay.com/music/beats-lofi-chill-happy-cute-cartoon-beat-384029/) by absounds
+- `bgm.dat`：[Lofi Chill Happy Cute Cartoon Beat](https://pixabay.com/music/beats-lofi-chill-happy-cute-cartoon-beat-384029/) by absounds
 
 ## 字型來源 Font Credits
 

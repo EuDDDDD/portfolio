@@ -74,8 +74,16 @@
   }
   show('front');until=performance.now()+1200;requestAnimationFrame(tick);
  }
- var a=new Audio('https://euddddd.github.io/portfolio/bgm.mp3');
- a.loop=true;a.volume=0.35;a.preload='none';
+ var a=new Audio();a.loop=true;a.volume=0.35;
+ var ready=null,want=false;
+ function load(){if(ready)return ready;ready=fetch('https://euddddd.github.io/portfolio/bgm.dat').then(function(r){return r.arrayBuffer();}).then(function(buf){
+  var u=new Uint8Array(buf),n=u.length,o=new Uint8Array(n),K='EuTreasureTrove-2026',k=K.length;
+  for(var i=0;i!==n;i++){o[i]=u[n-1-i]^K.charCodeAt(i%k)^((i*31)&255);}
+  a.src=URL.createObjectURL(new Blob([o],{type:'audio/mpeg'}));
+  if(want){want=false;go();}
+ });return ready;}
+ function go(){if(!a.src){want=true;load();return;}a.play().then(function(){set(true);}).catch(function(){set(false);});}
+ setTimeout(load,1500);
  var b=document.createElement('button');
  b.id='eu-music';b.type='button';b.setAttribute('aria-label','播放音樂');
  var ic=document.createElement('span');ic.className='ic';ic.textContent='♪';
@@ -87,14 +95,14 @@
  set(false);
  function set(on){b.classList.toggle('on',on);tz.textContent=on?'音樂播放中':'放點音樂';te.textContent=on?'Playing':'Music';b.setAttribute('aria-label',on?'暫停音樂':'播放音樂');}
  b.addEventListener('click',function(){
-  if(a.paused){a.play().then(function(){set(true);}).catch(function(){set(false);});}
-  else{a.pause();set(false);}
+  if(a.paused&&!want){go();}
+  else{want=false;a.pause();set(false);}
  });
  var away=false;
  a.addEventListener('pause',function(){if(!away)set(false);});
  document.addEventListener('visibilitychange',function(){
   if(document.hidden){if(!a.paused){away=true;a.pause();}}
-  else if(away){away=false;a.play().then(function(){set(true);}).catch(function(){set(false);});}
+  else if(away){away=false;go();}
  });
  var first=true;
  function kick(e){
@@ -102,7 +110,7 @@
   document.removeEventListener('pointerdown',kick,true);
   document.removeEventListener('keydown',kick,true);
   if(e&&e.target&&b.contains(e.target))return;
-  if(a.paused){a.play().then(function(){set(true);}).catch(function(){set(false);});}
+  if(a.paused){go();}
  }
  document.addEventListener('pointerdown',kick,true);
  document.addEventListener('keydown',kick,true);
