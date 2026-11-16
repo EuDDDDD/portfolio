@@ -54,7 +54,7 @@
   bu.style.touchAction='none';bu.style.cursor='grab';
   bu.addEventListener('pointerdown',function(e){if(e.button>0)return;var r=bu.getBoundingClientRect();bd={sx:e.clientX,sy:e.clientY,ox:e.clientX-r.left,id:e.pointerId,on:false};});
   window.addEventListener('pointermove',function(e){if(!bd||e.pointerId!==bd.id)return;
-   if(!bd.on){if(6>Math.abs(e.clientX-bd.sx)+Math.abs(e.clientY-bd.sy))return;bd.on=true;bheld=true;air=false;bvx=0;bvy=0;bnext=performance.now()+99999;bu.classList.remove('pre');bu.classList.remove('spin');bu.style.cursor='grabbing';
+   if(!bd.on){if(6>Math.abs(e.clientX-bd.sx)+Math.abs(e.clientY-bd.sy))return;bd.on=true;bheld=true;bu.style.zIndex=9998;air=false;bvx=0;bvy=0;bnext=performance.now()+99999;bu.classList.remove('pre');bu.classList.remove('spin');bu.style.cursor='grabbing';
     try{bu.setPointerCapture(e.pointerId);}catch(q){} bd.ox=bu.offsetWidth/2; bTalk(BH,99999);}
    var h=bu.offsetHeight||64; bx=e.clientX-bd.ox; by=Math.max(0,window.innerHeight-2-(e.clientY-6+h)); if(bx>BW())bx=BW(); if(0>bx)bx=0;
    var vx=e.movementX||0; if(vx>1)bface=1;else if(-1>vx)bface=-1; bsw=Math.max(-1,Math.min(1,bsw*0.6+vx*0.08));});
@@ -68,7 +68,7 @@
    if(bheld){}
    else if(air){bvy-=1500*dt;by+=bvy*dt;bx+=bvx*dt;if(bx>BW()){bx=BW();bvx=-bvx*0.5;}if(0>bx){bx=0;bvx=-bvx*0.5;}
     if(0>=by){by=0;air=false;sq();hops--;bnext=now+(hops>0?260:1800+Math.random()*3500);}}
-   else if(now>bnext){if(0>=hops)hops=1+Math.floor(Math.random()*3);jump(260+Math.random()*120);}
+   else if(now>bnext){if(0>=hops){hops=1+Math.floor(Math.random()*3);bu.style.zIndex=9990+Math.floor(Math.random()*8);}jump(260+Math.random()*120);}
    if(bx>BW())bx=BW();
    bu.style.transform='translate('+bx.toFixed(1)+'px,'+(-by).toFixed(1)+'px)';
    if(bvx>5)bface=1;else if(-5>bvx)bface=-1; var eyeL=bface>0?61:14;
@@ -80,12 +80,6 @@
    else for(var li=0;li!==LY.length;li++){var k=li===5?1.6:li, wob=li===5?(sp*25*(bvx>0?1:-1)):0;LY[li].style.transform=sp?'translateY('+(-sp*k*ex).toFixed(1)+'px) rotate('+wob.toFixed(1)+'deg)':'';}requestAnimationFrame(btick);}
   requestAnimationFrame(btick);
  }
- var snapAC=null;
- function snapFx(){try{snapAC=snapAC||new (window.AudioContext||window.webkitAudioContext)();var c=snapAC,t=c.currentTime+0.05,n=Math.floor(c.sampleRate*0.12),b=c.createBuffer(1,n,c.sampleRate),d=b.getChannelData(0);
-  for(var i=0;i!==n;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/n,6);
-  var src=c.createBufferSource();src.buffer=b;var bp=c.createBiquadFilter();bp.type='bandpass';bp.frequency.value=2600;bp.Q.value=1.6;var g=c.createGain();g.gain.setValueAtTime(0.9,t);g.gain.exponentialRampToValueAtTime(0.001,t+0.12);
-  var o2=c.createOscillator();o2.type='sine';o2.frequency.setValueAtTime(1800,t);o2.frequency.exponentialRampToValueAtTime(900,t+0.05);var g2=c.createGain();g2.gain.setValueAtTime(0.25,t);g2.gain.exponentialRampToValueAtTime(0.001,t+0.06);
-  src.connect(bp);bp.connect(g);g.connect(c.destination);o2.connect(g2);g2.connect(c.destination);src.start(t);o2.start(t);o2.stop(t+0.07);}catch(x){}}
  function mkWalker(o){if(document.getElementById(o.id))return;
   var ME='https://euddddd.github.io/portfolio/'+o.pre;
   var me=document.createElement('div');me.id=o.id;me.className='eu-wk';me.setAttribute('aria-hidden','true');
@@ -100,7 +94,7 @@
   function W(){return me.offsetWidth||107;}
   function maxX(){return Math.max(0,VW()-W()-8);}
   function pick(now){
-   var r=Math.random();
+   var r=Math.random();me.style.zIndex=9990+Math.floor(Math.random()*8);
    if(still){mode='idle';show('front');until=now+99999;return;}
    if(r>0.82){mode='sit';show('sit');me.classList.remove('walking');until=now+7000+Math.random()*6000;return;}
    if(r>0.55){mode='idle';show('front');me.classList.remove('walking');until=now+2500+Math.random()*3500;return;}
@@ -112,7 +106,7 @@
   me.addEventListener('click',function(){
    if(noClick){noClick=false;return;}
    var L=document.documentElement.classList.contains('eu-en')?lines.en:lines.zh;
-   say.textContent='';say.classList.remove('heart');var pickI=Math.floor(Math.random()*(L.length+(o.heart?1:0)));if(pickI===L.length){var hh=document.createElement('img');hh.src='https://euddddd.github.io/portfolio/ic_heart.png';hh.alt='♡';say.appendChild(hh);say.classList.add('heart');}else{say.textContent=L[pickI];if(o.snap&&pickI===0)snapFx();}say.classList.add('show');
+   say.textContent='';say.classList.remove('heart');var pickI=Math.floor(Math.random()*(L.length+(o.heart?1:0)));if(pickI===L.length){var hh=document.createElement('img');hh.src='https://euddddd.github.io/portfolio/ic_heart.png';hh.alt='♡';say.appendChild(hh);say.classList.add('heart');}else{say.textContent=L[pickI];}say.classList.add('show');
    me.classList.remove('walking');me.classList.remove('flip');show('wave');mode='talk';
    me.classList.remove('hop');void me.offsetWidth;me.classList.add('hop');
    clearTimeout(busy);busy=setTimeout(function(){say.classList.remove('show');me.classList.remove('hop');mode='idle';show('front');until=performance.now()+1500;},2400);
@@ -124,7 +118,7 @@
    if(!drag||e.pointerId!==drag.id)return;
    if(!drag.on){if(6>Math.abs(e.clientX-drag.sx)+Math.abs(e.clientY-drag.sy))return;drag.on=true;
     try{me.setPointerCapture(e.pointerId);}catch(q){}
-    clearTimeout(busy);me.classList.remove('walking');me.classList.remove('flip');me.classList.remove('hop');me.classList.add('held');show('up');mode='held';drag.ox=me.offsetWidth*o.ax;drag.oy=me.offsetHeight*o.ay;
+    clearTimeout(busy);me.classList.remove('walking');me.classList.remove('flip');me.classList.remove('hop');me.classList.add('held');me.style.zIndex=9998;show('up');mode='held';drag.ox=me.offsetWidth*o.ax;drag.oy=me.offsetHeight*o.ay;
     var L=document.documentElement.classList.contains('eu-en')?holdL.en:holdL.zh;say.classList.remove('heart');say.textContent=L[Math.floor(Math.random()*L.length)];say.classList.add('show');}
    var h=me.offsetHeight||130,base=window.innerHeight-h+4;
    x=e.clientX-drag.ox; lift=Math.max(0,base-(e.clientY-drag.oy)); vy=0;
@@ -153,9 +147,9 @@
  mkWalker({id:'eu-me',pre:'me_',heart:true,ax:.5,ay:.06,spd:1,
   lines:{zh:['嗨～歡迎光臨！','慢慢逛喔～','要不要玩章魚燒？','今天也辛苦了～','我在散步～','AI 聊天真的很好玩！'],en:['Hi, welcome!','Take your time~','Try Takoyaki House?','You did great today~','Just taking a stroll~','AI chat is so much fun!']},
   hold:{zh:['哇啊啊！','放我下來～','好、好高喔！','咦咦咦？！'],en:['Whoa!','Put me down~','So high!','Eek?!']}});
- mkWalker({id:'eu-rin',pre:'rin_',heart:false,ax:.65,ay:.03,spd:1.12,
-  snap:1,lines:{zh:['你的願望我收下了！','叮鈴～','又來啦？嘿嘿','別忘了我喔','快來找我許願～','神明也是會無聊的嘛','本大神才沒有在等你'],en:['Your wish? Received!','Ring-a-ling~','Back again? Heh','Don\'t forget me','Come make a wish~','Even gods get bored','I wasn\'t waiting for you or anything']},
-  hold:{zh:['喂！放我下來！','我可是神明耶！','……不爽。','你當我是貓喔？'],en:['Hey! Put me down!','I\'m a god, you know!','...Hmph.','Am I a cat to you?']}});
+ mkWalker({id:'eu-rin',pre:'rin_',heart:false,ax:.63,ay:.15,spd:1.12,
+  lines:{zh:['你的願望本大神收下了！','又來啦？嘿嘿','別忘了本大神喔','快來找本大神許願～','神明也是會無聊的嘛','本大神才沒有在等你'],en:['Your wish? Received!','Back again? Heh','Don\'t forget me','Come make a wish~','Even gods get bored','I wasn\'t waiting for you or anything']},
+  hold:{zh:['喂！放本大神下來！','本大神可是神耶！','……不爽。','你當本大神是貓喔？'],en:['Hey! Put me down!','I\'m a god, you know!','...Hmph.','Am I a cat to you?']}});
  var a=new Audio();a.loop=true;a.volume=0.2;
  var ready=null,want=false,ok=false,SIL='data:audio/wav;base64,UklGRkQDAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YSADAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgA==';
  function load(){if(ready)return ready;ready=fetch('https://euddddd.github.io/portfolio/bgm.dat').then(function(r){return r.arrayBuffer();}).then(function(buf){
