@@ -75,14 +75,14 @@
   show('front');until=performance.now()+1200;requestAnimationFrame(tick);
  }
  var a=new Audio();a.loop=true;a.volume=0.35;
- var ready=null,want=false;
+ var ready=null,want=false,ok=false,SIL='data:audio/wav;base64,UklGRkQDAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YSADAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgA==';
  function load(){if(ready)return ready;ready=fetch('https://euddddd.github.io/portfolio/bgm.dat').then(function(r){return r.arrayBuffer();}).then(function(buf){
   var u=new Uint8Array(buf),n=u.length,o=new Uint8Array(n),K='EuTreasureTrove-2026',k=K.length;
   for(var i=0;i!==n;i++){o[i]=u[n-1-i]^K.charCodeAt(i%k)^((i*31)&255);}
-  a.src=URL.createObjectURL(new Blob([o],{type:'audio/mpeg'}));
+  a.src=URL.createObjectURL(new Blob([o],{type:'audio/mpeg'}));ok=true;
   if(want){want=false;go();}
  });return ready;}
- function go(){if(!a.src){want=true;load();return;}a.play().then(function(){set(true);}).catch(function(){set(false);});}
+ function go(){if(!ok){want=true;try{a.src=SIL;var q=a.play();if(q&&q.catch)q.catch(function(){});}catch(x){}load();return;}a.play().then(function(){set(true);}).catch(function(){set(false);});}
  setTimeout(load,1500);
  var b=document.createElement('button');
  b.id='eu-music';b.type='button';b.setAttribute('aria-label','播放音樂');
