@@ -77,8 +77,9 @@ html:not(.eu-en) .eu .l-en,html.eu-en .eu .l-zh{display:none!important}
 .eu .foot .pill{padding:5px 16px;border:2.5px solid var(--line);border-radius:999px;background:#fff;color:var(--ink)}
 @media (max-width:600px){
  .eu .feat,.eu .grid,.eu .about{grid-template-columns:minmax(0,1fr)}
- .eu .about{justify-items:center;text-align:center}
- .eu .about .btns{justify-content:center;margin-left:0}
+ .eu .about{justify-items:start;text-align:left}
+ .eu .about .av{justify-self:center}
+ .eu .about h2,.eu .about .sub{text-align:center}
  .eu .ttl .dd{display:none!important}
  .eu .memo{padding-left:50px;padding-right:16px}.eu .memo::before{left:36px}
 }
