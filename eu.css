@@ -279,3 +279,7 @@ html.eu-en .eu .crm dl{grid-template-columns:7em minmax(0,1fr)}
 #eu-top.show:hover{margin-bottom:3px}
 @media (max-width:600px){#eu-top{width:40px;height:40px;bottom:calc(70px + env(safe-area-inset-bottom,0px));right:calc(20px + env(safe-area-inset-right,0px));background-size:17px 15px}}
 html:not(.eu-en) #eu-music .l-en,html.eu-en #eu-music .l-zh{display:none}
+
+/* protect */
+html,body,.eu,.eu-wk,#eu-bur,#eu-bg{-webkit-user-select:none!important;user-select:none!important;-webkit-touch-callout:none!important}
+.eu img,.eu-wk img,#eu-bur img,#eu-bg img{-webkit-user-drag:none!important;user-drag:none;-webkit-touch-callout:none!important}

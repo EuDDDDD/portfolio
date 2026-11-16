@@ -1,5 +1,10 @@
 (function(){
  if(document.getElementById('eu-music'))return;
+ if(!window.__euLock){window.__euLock=1;
+  var no=function(e){e.preventDefault();return false;};
+  ['contextmenu','dragstart','copy','cut','selectstart'].forEach(function(t){document.addEventListener(t,no,true);});
+  document.addEventListener('keydown',function(e){var k=(e.key||'').toLowerCase();if((e.ctrlKey||e.metaKey)&&(k==='s'||k==='u'||k==='c'||k==='a'||k==='p'))e.preventDefault();},true);
+ }
  var H=document.documentElement,pref=null;
  try{pref=localStorage.getItem('eu-lang');}catch(x){}
  if(pref==='en'||(!pref&&!/^zh/i.test(navigator.language||'zh'))){H.classList.add('eu-en');}
