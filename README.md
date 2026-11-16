@@ -18,6 +18,7 @@ This repository holds the images, music and font used by [Eu's Treasure Trove](h
 | `avatar.webp` | 作者頭像 · Author avatar |
 | `me_*.webp` | 網站底部散步的像素小人 · Walking pixel mascot |
 | `stk_*.webp` | 標題旁的貼紙 · Title stickers |
+| `bur_*.webp` | 底部跳來跳去的眼球漢堡（分層） · Bouncing eyeball burger mascot (layered) |
 | `ic_*.png` | 網站圖示與背景漂浮小物 · Site icons & floating decorations |
 | `eu.css`, `eu.js` | 網站共用樣式與程式（背景、音樂、小人、語言切換） · Shared site style & script |
 | `bgm.dat` | 網站背景音樂（已編碼，僅供網站播放） · Background music (encoded, for on-site playback only) |
