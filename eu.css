@@ -233,7 +233,7 @@ html.eu-en .eu .crm dl{grid-template-columns:7em minmax(0,1fr)}
 @keyframes eu-ang{0%,100%{transform:scale(.9) rotate(-6deg)}50%{transform:scale(1.12) rotate(6deg)}}
 @media (max-width:600px){.eu-wk .ang,#eu-bur .ang{width:22px!important;height:22px!important}}
 .eu-wk.held{cursor:grabbing}
-.eu-wk.held .fr{transform-origin:50% 8%;animation:eu-dangle 1.6s steps(1) infinite}
+.eu-wk.held .fr{animation:none}
 @keyframes eu-dangle{0%,100%{transform:rotate(-6deg)}25%,75%{transform:none}50%{transform:rotate(6deg)}}
 .eu-wk.held .bob{animation:none}
 @font-face{font-family:'Cubic11';src:url('https://euddddd.github.io/portfolio/Cubic_11.woff2') format('woff2');font-display:swap}

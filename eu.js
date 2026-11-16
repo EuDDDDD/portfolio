@@ -101,7 +101,7 @@
   var ME='https://euddddd.github.io/portfolio/'+o.pre;
   var me=document.createElement('div');me.id=o.id;me.className='eu-wk';me.setAttribute('aria-hidden','true');
   var bob=document.createElement('div');bob.className='bob';var fr=document.createElement('div');fr.className='fr';
-  var F={};['walk','side','front','wave','sit','up'].forEach(function(k){var im=document.createElement('img');im.src=ME+k+'.webp';im.alt='';im.draggable=false;fr.appendChild(im);F[k]=im;});
+  var F={};['walk','side','front','wave','sit','up','upl','upr'].forEach(function(k){var im=document.createElement('img');im.src=ME+k+'.webp';im.alt='';im.draggable=false;fr.appendChild(im);F[k]=im;});
   var say=document.createElement('div');say.className='say';
   bob.appendChild(fr);if(o.angry){var ang=document.createElement('span');ang.className='ang';bob.appendChild(ang);}me.appendChild(bob);me.appendChild(say);document.body.appendChild(me);
   var cur=null;function show(k){if(cur===k)return;if(cur)F[cur].classList.remove('on');F[k].classList.add('on');cur=k;}
@@ -152,7 +152,7 @@
     if(sp>=Math.abs(tx-x)){x=tx;me.classList.remove('walking');mode='idle';show('front');until=now+1800+Math.random()*2500;}
     else{x+=dir*sp; if(now>stepT){step=1-step;stepT=now+260;show(step?'walk':'side');}}
    }else if(mode==='fall'){vy+=2600*dt;lift-=vy*dt;if(0>=lift)land();
-   }else if(mode==='held'){
+   }else if(mode==='held'){if(now>stepT){step=(step+1)%4;stepT=now+400;show(['upl','up','upr','up'][step]);}
    }else if(mode!=='talk'&&now>until){pick(now);}
    if(x>maxX())x=maxX(); if(0>x)x=0;
    if(mode==='walk'&&((x>=maxX()&&tx>=x)||(0>=x&&x>=tx))){me.classList.remove('walking');mode='idle';show('front');until=now+1500;}
