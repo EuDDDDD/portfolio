@@ -38,12 +38,12 @@
   var BL={zh:['你好','歡迎光臨','好餓','吃掉你','要點餐嗎','我在看你','再來一份','別走'],en:['hello','welcome','so hungry','eat you','order now','i see you','one more','dont go']};
   var JK='#$%&@*!?▓░▒§¤◆',bT=0,bI=0;
   function toks(t){var a=[],i=0;while(t.length>i){if(t.charAt(i+1)==='@'){a.push(t.charAt(i)+'@');i+=2;}else{a.push(t.charAt(i));i++;}}return a;}
-  function garble(t){var a=toks(t),o='';if(a.length>2&&Math.random()>.4){var i=Math.floor(Math.random()*(a.length-1));var c=a[i];a[i]=a[i+1];a[i+1]=c;}
-   for(var i=0;i!==a.length;i++){o+=a[i];if(Math.random()>.55)o+=(Math.random()>.5?'...':'')+JK.charAt(Math.floor(Math.random()*JK.length));}return o;}
+  function garble(t){var a=toks(t),o='';if(a.length>2&&Math.random()>.65){var i=Math.floor(Math.random()*(a.length-1));var c=a[i];a[i]=a[i+1];a[i+1]=c;}
+   for(var i=0;i!==a.length;i++){o+=a[i];if(Math.random()>.78)o+=(Math.random()>.6?'...':'')+JK.charAt(Math.floor(Math.random()*JK.length));}return o;}
   var BH={zh:['我的料要掉了','放開我','邪@大人...救我','別搖','眼睛要掉了','放我下去'],en:['my fillings','let go','dont shake','lord @vil...save me','my eye','put me down']};
   function bput(g){bsay.textContent='';var p=g.split('@');for(var i=0;i!==p.length;i++){if(i){var m=document.createElement('span');m.className='mos';bsay.appendChild(m);}bsay.appendChild(document.createTextNode(p[i]));}}
   function bTalk(src,dur){src=src||BL;var L=document.documentElement.classList.contains('eu-en')?src.en:src.zh;var t=L[Math.floor(Math.random()*L.length)];
-   bput(garble(t));bsay.classList.add('show');clearInterval(bI);bI=setInterval(function(){bput(garble(t));},140);
+   bput(garble(t));bsay.classList.add('show');clearInterval(bI);bI=setInterval(function(){bput(garble(t));},700);
    clearTimeout(bT);bT=setTimeout(function(){clearInterval(bI);bsay.classList.remove('show');},dur||2200);}
   function BW(){var v=document.documentElement.clientWidth||window.innerWidth;if(window.visualViewport&&window.visualViewport.width)v=Math.min(v,window.visualViewport.width);return Math.max(0,v-(bu.offsetWidth||58)-8);}
   var bface=1,bx=BW()*(0.2+Math.random()*0.6),by=0,bvx=0,bvy=0,air=false,bnext=performance.now()+1500,blast=0,hops=0;
