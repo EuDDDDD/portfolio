@@ -121,7 +121,7 @@ html.eu-seen .eu .ttl .dd{animation:eu-bob 3.2s ease-in-out infinite}
 .eu h2 img.hh{display:inline-block;width:.8em;height:auto;margin-left:.35em;vertical-align:-.05em}
 .eu .nav a>span,.eu .btn>span,.eu .eu-lang>span{position:relative;top:1.5px}
 #eu-bur{position:fixed;left:0;bottom:calc(env(safe-area-inset-bottom,0px) + 2px);z-index:9997;width:60px;height:64px;cursor:pointer;-webkit-tap-highlight-color:transparent;will-change:transform;touch-action:manipulation}
-#eu-bur .bw{position:absolute;inset:0;transform-origin:50% 100%}
+#eu-bur .bw{position:absolute;inset:0;transform-origin:50% 100%;filter:saturate(.6) brightness(1.28) contrast(.8)}
 #eu-bur .ly{position:absolute;display:block;will-change:transform;transition:left .25s ease-out}
 #eu-bur .ly img{display:block;width:100%;height:auto;pointer-events:none;-webkit-user-drag:none;user-select:none;image-rendering:pixelated}
 #eu-bur.sq .bw{animation:eu-bsq .34s ease-out}
