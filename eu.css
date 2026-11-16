@@ -119,11 +119,11 @@ html.eu-seen .eu .ttl .dd{animation:eu-bob 3.2s ease-in-out infinite}
 .eu .nav{margin-bottom:14px}
 .eu .memo{margin:0 0 18px}
 .eu h2 img.hh{display:inline-block;width:.8em;height:auto;margin-left:.35em;vertical-align:-.05em}
-.eu .nav a>span,.eu .btn>span,.eu .eu-lang>span{position:relative;top:1.5px}
+.eu .nav a>span,.eu .btn>span,.eu .eu-lang>span,.eu .back>span{position:relative;top:1.5px}
 /* intro */
 .eu .btn.alt{background:#fff}
 .eu .pwa{display:block}
-.eu .back{align-self:flex-start;margin:-8px 0 -10px;font-size:14px;padding:3px 14px;border:2px dashed var(--line);border-radius:999px;background:#fff}
+.eu .back{align-self:flex-start;margin:-8px 0 -10px;font-size:14px;letter-spacing:.1em;text-shadow:.7px 0 0 currentColor;padding:3px 16px;line-height:1.5;border:2px dashed var(--line);border-radius:999px;background:#fff}
 .eu .back:hover{transform:translateX(-2px)}
 .eu .tags{display:flex;flex-wrap:wrap;gap:6px;margin:2px 4px 12px}
 .eu .tag{font-size:13px;padding:0 10px;border:2px solid var(--line);border-radius:999px;background:#fff6dc}
@@ -149,8 +149,12 @@ html.eu-seen .eu .ttl .dd{animation:eu-bob 3.2s ease-in-out infinite}
 .eu .dot.on{background:#e8846f;width:24px;border-radius:999px}
 .eu .ops{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;align-content:center;min-height:100%}
 .eu .op{background:#fffaf1;border:2.5px dashed #e3b98f;border-radius:16px;padding:10px 12px;font-size:13.5px;line-height:1.8}
-.eu .op b{display:block;font-size:17px;color:var(--head);margin-bottom:2px}
-.eu .op kbd{font-family:inherit;font-size:12px;padding:0 6px;border:2px solid var(--line);border-bottom-width:3.5px;border-radius:6px;background:#fff;margin-right:4px}
+.eu .op b{display:flex;align-items:center;gap:6px;font-size:17px;color:var(--head);margin-bottom:2px}
+.eu .sl .op .oi.kb{height:.8em}
+.eu .sl .op .oi{height:1.3em;width:auto;aspect-ratio:auto;display:block;border:0;border-radius:0;background:none;object-fit:contain}
+.eu .op .kg{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:8px;align-items:start}
+.eu .op .kg kbd{justify-self:start}
+.eu .op kbd{font-family:inherit;font-size:inherit;padding:0 3px;margin-right:0;color:#7a4e3a;white-space:nowrap;background:linear-gradient(transparent 52%,#bfe8cf 52%,#bfe8cf 92%,transparent 92%)}
 .eu .cr{width:100%;display:flex;flex-direction:column;align-items:center}
 .eu .cr summary{list-style:none;cursor:pointer}
 .eu .cr summary::-webkit-details-marker{display:none}
@@ -160,11 +164,18 @@ html.eu-seen .eu .ttl .dd{animation:eu-bob 3.2s ease-in-out infinite}
 html.eu-en .eu .crm dl{grid-template-columns:7em minmax(0,1fr)}
 .eu .crm dt{align-self:start;height:28px;text-align:center;white-space:nowrap;color:#7a4e3a;background:linear-gradient(transparent 50%,var(--hl,#ffe0a3) 50%,var(--hl,#ffe0a3) 88%,transparent 88%);border-radius:2px;transform:rotate(-1.2deg)}
 .eu .crm dd{margin:0;min-width:0}
+/* crisp hover: move with top/left instead of transform so text never goes blurry */
+.eu .nav a,.eu .eu-lang,.eu .btn,.eu .back{position:relative;top:0;left:0;transition:top .12s,left .12s}
+.eu .nav a:hover,.eu .eu-lang:hover{transform:none;top:-2px}
+.eu .card{transition:top .15s}
+.eu a.card:hover{transform:rotate(var(--r,0deg));top:-3px}
+.eu a.btn:hover,.eu a.card:hover .btn{transform:none;top:-1px}
+.eu .back:hover{transform:none;left:-2px}
 @media (max-width:600px){
  .eu .sl{grid-template-columns:minmax(0,1fr);gap:8px;align-items:start}
  .eu .sl h2{margin-top:4px;font-size:21px}
  .eu .ops{gap:8px}
- .eu .op{padding:8px 9px;font-size:12.5px;line-height:1.7}.eu .op b{font-size:15px}.eu .op kbd{font-size:11px;padding:0 4px}
+ .eu .op{padding:8px 9px;font-size:12.5px;line-height:1.7}.eu .op b{font-size:15px}.eu .op kbd{padding:0 2px}
  .eu .fts{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 12px}
  .eu .ft{padding:8px 8px 10px}
  .eu .ft b{font-size:15.5px}.eu .ft small{font-size:13px}
@@ -209,17 +220,17 @@ html.eu-en .eu .crm dl{grid-template-columns:7em minmax(0,1fr)}
 #eu-rin{width:95px;height:135px}
 @media (max-width:600px){#eu-rin{width:73px;height:104px}}
 #eu-rin.held .fr{transform-origin:64% 7%}
-.eu-wk .ang,#eu-bur .ang{position:absolute;left:60%;top:14%;width:28px;height:28px;background:url(https://euddddd.github.io/portfolio/emo_angry.webp) center/contain no-repeat;opacity:0;transform:scale(0);pointer-events:none;z-index:3}
+.eu-wk .ang,#eu-bur .ang{image-rendering:pixelated;position:absolute;left:60%;top:14%;width:28px;height:28px;background:url(https://euddddd.github.io/portfolio/emo_angry.webp) center/contain no-repeat;opacity:0;transform:scale(0);pointer-events:none;z-index:3}
 #eu-me .ang{background-image:url(https://euddddd.github.io/portfolio/emo_heart.webp);left:64%;top:6%;width:30px;height:30px}
 #eu-bur .ang{background-image:url(https://euddddd.github.io/portfolio/emo_dizzy.webp);left:66%;top:-14%;width:28px;height:28px;z-index:12}
 #eu-bur.held .bsay{margin-bottom:26px}
 .eu-wk.held .say{margin-bottom:18px}
-#eu-me.held .ang{animation:eu-hrt .45s ease-in-out infinite alternate}
-#eu-bur.held .ang{opacity:1;animation:eu-dz 1.3s linear infinite}
-@keyframes eu-hrt{from{transform:translateY(1px) scale(.9)}to{transform:translateY(-4px) scale(1.08)}}
+#eu-me.held .ang{animation:eu-hrt 1s steps(1) infinite}
+#eu-bur.held .ang{opacity:1;animation:eu-dz 3.2s steps(8) infinite}
+@keyframes eu-hrt{0%,100%{transform:translateY(0) scale(.94)}50%{transform:translateY(-4px) scale(1.06)}}
 @keyframes eu-dz{from{transform:rotate(0)}to{transform:rotate(-360deg)}}
-.eu-wk.held .ang{opacity:1;animation:eu-ang .5s ease-in-out infinite alternate}
-@keyframes eu-ang{from{transform:scale(.85) rotate(-8deg)}to{transform:scale(1.1) rotate(8deg)}}
+.eu-wk.held .ang{opacity:1;animation:eu-ang .9s steps(1) infinite}
+@keyframes eu-ang{0%,100%{transform:scale(.9) rotate(-6deg)}50%{transform:scale(1.12) rotate(6deg)}}
 @media (max-width:600px){.eu-wk .ang,#eu-bur .ang{width:22px!important;height:22px!important}}
 .eu-wk.held{cursor:grabbing}
 .eu-wk.held .fr{transform-origin:50% 8%;animation:eu-dangle 1.1s ease-in-out infinite}
@@ -237,8 +248,8 @@ html.eu-en .eu .crm dl{grid-template-columns:7em minmax(0,1fr)}
 @media (prefers-reduced-motion:reduce){#eu-bg .f{display:none}}
 #eu-music{position:fixed;right:calc(18px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:9999;display:flex;align-items:center;gap:8px;
  padding:8px 14px 8px 10px;border:2.5px solid #6e5444;border-radius:999px;background:#fffdf8;color:#5a4636;box-shadow:3px 4px 0 #e7c9a3;
- font-family:'Cubic11',"LXGW WenKai TC","Noto Sans TC",sans-serif;font-size:15px;font-weight:400;cursor:pointer;transition:transform .15s;-webkit-tap-highlight-color:transparent}
-#eu-music:hover{transform:translateY(-2px) rotate(-2deg)}
+ font-family:'Cubic11',"LXGW WenKai TC","Noto Sans TC",sans-serif;font-size:15px;font-weight:400;cursor:pointer;transition:bottom .15s;-webkit-tap-highlight-color:transparent}
+#eu-music:hover{bottom:calc(20px + env(safe-area-inset-bottom,0px))}
 #eu-music .ic svg{display:block;transform:translateX(.5px)}
 #eu-music .ic{width:30px;height:30px;border-radius:50%;background:#ffd98a;border:2px solid #6e5444;display:flex;align-items:center;justify-content:center;font-size:16px;line-height:1}
 #eu-music.on .ic{animation:eu-spin 2.4s linear infinite;background:#ffb9a3}
@@ -251,6 +262,6 @@ html.eu-en .eu .crm dl{grid-template-columns:7em minmax(0,1fr)}
 @media (max-width:600px){#eu-music .tx{display:none}#eu-music{padding:6px}}
 #eu-top{position:fixed;right:calc(18px + env(safe-area-inset-right,0px));bottom:calc(80px + env(safe-area-inset-bottom,0px));z-index:9999;width:46px;height:46px;padding:0;border:2.5px solid #6e5444;border-radius:50%;background:#fffdf8 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 9' fill='%236e5444' shape-rendering='crispEdges'%3E%3Crect x='4' y='0' width='1' height='1'/%3E%3Crect x='5' y='0' width='1' height='1'/%3E%3Crect x='3' y='1' width='1' height='1'/%3E%3Crect x='4' y='1' width='1' height='1'/%3E%3Crect x='5' y='1' width='1' height='1'/%3E%3Crect x='6' y='1' width='1' height='1'/%3E%3Crect x='2' y='2' width='1' height='1'/%3E%3Crect x='3' y='2' width='1' height='1'/%3E%3Crect x='4' y='2' width='1' height='1'/%3E%3Crect x='5' y='2' width='1' height='1'/%3E%3Crect x='6' y='2' width='1' height='1'/%3E%3Crect x='7' y='2' width='1' height='1'/%3E%3Crect x='1' y='3' width='1' height='1'/%3E%3Crect x='2' y='3' width='1' height='1'/%3E%3Crect x='3' y='3' width='1' height='1'/%3E%3Crect x='4' y='3' width='1' height='1'/%3E%3Crect x='5' y='3' width='1' height='1'/%3E%3Crect x='6' y='3' width='1' height='1'/%3E%3Crect x='7' y='3' width='1' height='1'/%3E%3Crect x='8' y='3' width='1' height='1'/%3E%3Crect x='0' y='4' width='1' height='1'/%3E%3Crect x='1' y='4' width='1' height='1'/%3E%3Crect x='2' y='4' width='1' height='1'/%3E%3Crect x='3' y='4' width='1' height='1'/%3E%3Crect x='4' y='4' width='1' height='1'/%3E%3Crect x='5' y='4' width='1' height='1'/%3E%3Crect x='6' y='4' width='1' height='1'/%3E%3Crect x='7' y='4' width='1' height='1'/%3E%3Crect x='8' y='4' width='1' height='1'/%3E%3Crect x='9' y='4' width='1' height='1'/%3E%3Crect x='3' y='5' width='1' height='1'/%3E%3Crect x='4' y='5' width='1' height='1'/%3E%3Crect x='5' y='5' width='1' height='1'/%3E%3Crect x='6' y='5' width='1' height='1'/%3E%3Crect x='3' y='6' width='1' height='1'/%3E%3Crect x='4' y='6' width='1' height='1'/%3E%3Crect x='5' y='6' width='1' height='1'/%3E%3Crect x='6' y='6' width='1' height='1'/%3E%3Crect x='3' y='7' width='1' height='1'/%3E%3Crect x='4' y='7' width='1' height='1'/%3E%3Crect x='5' y='7' width='1' height='1'/%3E%3Crect x='6' y='7' width='1' height='1'/%3E%3Crect x='3' y='8' width='1' height='1'/%3E%3Crect x='4' y='8' width='1' height='1'/%3E%3Crect x='5' y='8' width='1' height='1'/%3E%3Crect x='6' y='8' width='1' height='1'/%3E%3C/svg%3E") center/20px 18px no-repeat;box-shadow:3px 4px 0 #e7c9a3;cursor:pointer;opacity:0;transform:translateY(12px) scale(.8);pointer-events:none;transition:opacity .2s,transform .2s;-webkit-tap-highlight-color:transparent}
 #eu-top.show{opacity:1;transform:none;pointer-events:auto}
-#eu-top.show:hover{transform:translateY(-3px)}
+#eu-top.show:hover{margin-bottom:3px}
 @media (max-width:600px){#eu-top{width:40px;height:40px;bottom:calc(70px + env(safe-area-inset-bottom,0px));right:calc(20px + env(safe-area-inset-right,0px));background-size:17px 15px}}
 html:not(.eu-en) #eu-music .l-en,html.eu-en #eu-music .l-zh{display:none}
