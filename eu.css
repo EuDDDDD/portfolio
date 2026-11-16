@@ -177,7 +177,10 @@ html.eu-en .eu .crm dl{grid-template-columns:7em minmax(0,1fr)}
  .eu .sl.wide{grid-template-columns:minmax(0,1fr)}
  .eu .sl h2{margin-top:4px;font-size:21px}
  .eu .ops{gap:8px}
- .eu .op{padding:8px 9px;font-size:12.5px;line-height:1.7}.eu .op b{font-size:15px}.eu .op kbd{padding:0 2px}
+ .eu .op .kg{grid-template-columns:minmax(0,1fr)}
+ .eu .op .kg kbd{margin-top:4px}
+ .eu .op .kg span{padding-left:2px}
+ .eu .op{padding:8px 10px;font-size:13px;line-height:1.6}.eu .op b{font-size:15px}.eu .op kbd{padding:0 2px}
  .eu .fts{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 12px}
  .eu .ft{padding:8px 8px 10px}
  .eu .ft b{font-size:15.5px}.eu .ft small{font-size:13px}
