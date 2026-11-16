@@ -80,6 +80,7 @@ html:not(.eu-en) .eu .l-en,html.eu-en .eu .l-zh{display:none!important}
  .eu .about{justify-items:start;text-align:left}
  .eu .about .av{justify-self:center}
  .eu .about h2,.eu .about .sub{text-align:center}
+ .eu .tags.ab{justify-content:center}
  .eu .ttl .dd{display:none!important}
  .eu .memo{padding-left:50px;padding-right:16px}.eu .memo::before{left:36px}
 }
@@ -126,7 +127,9 @@ html.eu-seen .eu .ttl .dd{animation:eu-bob 3.2s ease-in-out infinite}
 .eu .back{align-self:flex-start;margin:-8px 0 -10px;font-size:14px;letter-spacing:.1em;text-shadow:.7px 0 0 currentColor;padding:3px 16px;line-height:1.5;border:2px dashed var(--line);border-radius:999px;background:#fff}
 .eu .back:hover{transform:translateX(-2px)}
 .eu .tags{display:flex;flex-wrap:wrap;gap:6px;margin:2px 4px 12px}
-.eu .tag{font-size:13px;padding:0 10px;border:2px solid var(--line);border-radius:999px;background:#fff6dc}
+.eu .tag{font-size:13px;padding:0 10px;border:2px solid var(--line);border-radius:999px;background:#fff6dc;white-space:nowrap}
+.eu .tags.ab{margin:6px 4px 4px}
+.eu .tags.ab .tag:nth-child(2){background:#dff2e6}
 .eu .fts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px 14px;width:100%}
 .eu .ft{padding:10px 10px 12px}
 .eu .ft img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;border:2.5px solid var(--line)}
