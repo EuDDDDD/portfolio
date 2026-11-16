@@ -168,7 +168,7 @@
  setTimeout(load,1500);
  var b=document.createElement('button');
  b.id='eu-music';b.type='button';b.setAttribute('aria-label','播放音樂');
- var ic=document.createElement('span');ic.className='ic';ic.textContent='♪';
+ var ic=document.createElement('span');ic.className='ic';var NS='http://www.w3.org/2000/svg',sv=document.createElementNS(NS,'svg');sv.setAttribute('viewBox','0 0 16 16');sv.setAttribute('width','15');sv.setAttribute('height','15');var pa=document.createElementNS(NS,'path');pa.setAttribute('d','M7 2.2h1.7c.4 1.6 1.6 2.4 3.3 2.9v1.8c-1.4-.2-2.5-.7-3.3-1.4v5.6c0 1.7-1.4 2.9-3.1 2.9C4 14 3 13.2 3 12c0-1.4 1.4-2.4 3-2.4.4 0 .7 0 1 .1z');pa.setAttribute('fill','currentColor');sv.appendChild(pa);ic.appendChild(sv);
  var tx=document.createElement('span');tx.className='tx';
  var tz=document.createElement('span');tz.className='l-zh';var te=document.createElement('span');te.className='l-en';tx.appendChild(tz);tx.appendChild(te);
  var bars=document.createElement('span');bars.className='bars';
