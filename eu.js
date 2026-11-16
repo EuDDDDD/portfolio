@@ -73,15 +73,15 @@
   function jump(power,dirBias){var dir=dirBias||(Math.random()>0.5?1:-1);if(bx>BW()-40)dir=-1;if(40>bx)dir=1;
    bnext=performance.now()+99999;bu.classList.add('pre');setTimeout(function(){bu.classList.remove('pre');bvy=power;bvx=dir*(60+Math.random()*90);air=true;},120);}
   var bd=null,bheld=false,bnoClick=false;
-  bu.style.touchAction='none';bu.style.cursor='grab';
+  bu.style.touchAction='none';
   bu.addEventListener('pointerdown',function(e){if(e.button>0)return;var r=bu.getBoundingClientRect();bd={sx:e.clientX,sy:e.clientY,ox:e.clientX-r.left,id:e.pointerId,on:false};});
   window.addEventListener('pointermove',function(e){if(!bd||e.pointerId!==bd.id)return;
-   if(!bd.on){if(6>Math.abs(e.clientX-bd.sx)+Math.abs(e.clientY-bd.sy))return;bd.on=true;bheld=true;bu.classList.add('held');bu.style.zIndex=9998;air=false;bvx=0;bvy=0;bnext=performance.now()+99999;bu.classList.remove('pre');bu.classList.remove('spin');bu.style.cursor='grabbing';
+   if(!bd.on){if(6>Math.abs(e.clientX-bd.sx)+Math.abs(e.clientY-bd.sy))return;bd.on=true;bheld=true;bu.classList.add('held');document.documentElement.classList.add('eu-grab');bu.style.zIndex=9998;air=false;bvx=0;bvy=0;bnext=performance.now()+99999;bu.classList.remove('pre');bu.classList.remove('spin');
     try{bu.setPointerCapture(e.pointerId);}catch(q){} bd.ox=bu.offsetWidth/2; bTalk(BH,99999);}
    var h=bu.offsetHeight||64; bx=e.clientX-bd.ox; by=Math.max(0,window.innerHeight-2-(e.clientY-6+h)); if(bx>BW())bx=BW(); if(0>bx)bx=0;
    var vx=e.movementX||0; if(vx>1)bface=1;else if(-1>vx)bface=-1; bsw=Math.max(-1,Math.min(1,bsw*0.6+vx*0.08));});
   function bdrop(e){if(!bd||(e&&e.pointerId!==bd.id))return;var was=bd.on;bd=null;if(!was)return;bnoClick=true;setTimeout(function(){bnoClick=false;},50);
-   bheld=false;bu.classList.remove('held');bu.style.cursor='grab';clearTimeout(bT);bT=setTimeout(function(){clearInterval(bI);bsay.classList.remove('show');},900);
+   bheld=false;bu.classList.remove('held');document.documentElement.classList.remove('eu-grab');clearTimeout(bT);bT=setTimeout(function(){clearInterval(bI);bsay.classList.remove('show');},900);
    if(by>2){air=true;bvy=0;bvx=0;}else{sq();bnext=performance.now()+1800;}}
   window.addEventListener('pointerup',bdrop);window.addEventListener('pointercancel',bdrop);
   var bsw=0;
@@ -140,14 +140,14 @@
    if(!drag||e.pointerId!==drag.id)return;
    if(!drag.on){if(6>Math.abs(e.clientX-drag.sx)+Math.abs(e.clientY-drag.sy))return;drag.on=true;
     try{me.setPointerCapture(e.pointerId);}catch(q){}
-    clearTimeout(busy);me.classList.remove('walking');me.classList.remove('flip');me.classList.remove('hop');me.classList.add('held');me.style.zIndex=9998;show('up');mode='held';drag.ox=me.offsetWidth*o.ax;drag.oy=me.offsetHeight*o.ay;
+    clearTimeout(busy);me.classList.remove('walking');me.classList.remove('flip');me.classList.remove('hop');me.classList.add('held');document.documentElement.classList.add('eu-grab');me.style.zIndex=9998;show('up');mode='held';drag.ox=me.offsetWidth*o.ax;drag.oy=me.offsetHeight*o.ay;
     var L=document.documentElement.classList.contains('eu-en')?holdL.en:holdL.zh;say.classList.remove('heart');say.textContent=L[Math.floor(Math.random()*L.length)];say.classList.add('show');}
    var h=me.offsetHeight||130,base=window.innerHeight-h+4;
    x=e.clientX-drag.ox; lift=Math.max(0,base-(e.clientY-drag.oy)); vy=0;
    if(x>maxX())x=maxX(); if(0>x)x=0;
   });
   function drop(e){if(!drag||(e&&e.pointerId!==drag.id))return;var was=drag.on;drag=null;if(!was)return;noClick=true;setTimeout(function(){noClick=false;},50);
-   me.classList.remove('held');mode=lift>2?'fall':'land';if(mode==='land')land();}
+   me.classList.remove('held');document.documentElement.classList.remove('eu-grab');mode=lift>2?'fall':'land';if(mode==='land')land();}
   function land(){lift=0;vy=0;say.classList.remove('show');show('front');me.classList.remove('hop');void me.offsetWidth;me.classList.add('hop');mode='idle';until=performance.now()+1800;}
   window.addEventListener('pointerup',drop);window.addEventListener('pointercancel',drop);
   function tick(now){
