@@ -207,9 +207,9 @@ html.eu-en .eu .crm dl{grid-template-columns:7em minmax(0,1fr)}
 .eu-wk .fr img{position:absolute;inset:0;width:100%;height:100%;opacity:0;pointer-events:none;-webkit-user-drag:none;user-select:none}
 .eu-wk .fr img.on{opacity:1}
 .eu-wk.flip .fr{transform:scaleX(-1)}
-.eu-wk.walking .bob{animation:eu-mebob .42s ease-in-out infinite}
+.eu-wk.walking .bob{animation:eu-mebob .52s steps(1) infinite}
 .eu-wk .bob{position:absolute;inset:0}
-@keyframes eu-mebob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes eu-mebob{0%,100%{transform:none}50%{transform:translateY(-2px)}}
 .eu-wk.hop .bob{transform-origin:50% 100%;animation:eu-mehop .55s ease-out}
 @keyframes eu-mehop{0%{transform:scale(1,1)}18%{transform:scale(1.14,.8)}40%{transform:scale(.92,1.1)}58%{transform:scale(1.05,.95)}76%{transform:scale(.98,1.02)}100%{transform:scale(1,1)}}
 .eu-wk .say{position:absolute;left:50%;bottom:100%;margin-bottom:8px;transform:translateX(-50%) scale(.6);opacity:0;white-space:nowrap;background:#3d2a22;color:#fff6e6;border:3px solid #f2d3ae;outline:3px solid #6e5444;border-radius:6px;padding:6px 22px 6px 14px;font:14px/1.5 'Cubic11',"Noto Sans TC",sans-serif;box-shadow:4px 5px 0 3px rgba(110,84,68,.25);transition:transform .2s,opacity .2s;pointer-events:none}
