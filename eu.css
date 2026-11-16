@@ -140,27 +140,30 @@ html.eu-seen .eu .ttl .dd{animation:eu-bob 3.2s ease-in-out infinite}
 @keyframes eu-mos{50%{background-position:.17em .17em;filter:hue-rotate(40deg)}}
 #eu-bur .bsay.show{opacity:1;transform:translateX(-50%) scale(1);animation:eu-glitch 1.4s steps(1) infinite}
 @keyframes eu-glitch{0%,100%{transform:translateX(-50%);clip-path:none}8%{transform:translateX(calc(-50% + 3px)) skewX(-6deg);clip-path:inset(0 0 45% 0)}10%{transform:translateX(calc(-50% - 3px));clip-path:inset(40% 0 0 0)}12%{transform:translateX(-50%);clip-path:none}55%{opacity:1}57%{opacity:.35}59%{opacity:1}78%{transform:translateX(calc(-50% - 2px)) skewX(4deg);clip-path:inset(20% 0 30% 0)}80%{transform:translateX(-50%);clip-path:none}}
-#eu-me{position:fixed;left:0;bottom:calc(env(safe-area-inset-bottom,0px) - 4px);z-index:9998;width:107px;height:130px;cursor:pointer;-webkit-tap-highlight-color:transparent;will-change:transform;touch-action:none;cursor:grab}
-#eu-me .fr{position:absolute;inset:0;transform-origin:50% 100%}
-#eu-me .fr img{position:absolute;inset:0;width:100%;height:100%;opacity:0;pointer-events:none;-webkit-user-drag:none;user-select:none}
-#eu-me .fr img.on{opacity:1}
-#eu-me.flip .fr{transform:scaleX(-1)}
-#eu-me.walking .bob{animation:eu-mebob .42s ease-in-out infinite}
-#eu-me .bob{position:absolute;inset:0}
+.eu-wk{position:fixed;left:0;bottom:calc(env(safe-area-inset-bottom,0px) - 4px);z-index:9998;width:107px;height:130px;cursor:pointer;-webkit-tap-highlight-color:transparent;will-change:transform;touch-action:none;cursor:grab}
+.eu-wk .fr{position:absolute;inset:0;transform-origin:50% 100%}
+.eu-wk .fr img{position:absolute;inset:0;width:100%;height:100%;opacity:0;pointer-events:none;-webkit-user-drag:none;user-select:none}
+.eu-wk .fr img.on{opacity:1}
+.eu-wk.flip .fr{transform:scaleX(-1)}
+.eu-wk.walking .bob{animation:eu-mebob .42s ease-in-out infinite}
+.eu-wk .bob{position:absolute;inset:0}
 @keyframes eu-mebob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
-#eu-me.hop .bob{transform-origin:50% 100%;animation:eu-mehop .55s ease-out}
+.eu-wk.hop .bob{transform-origin:50% 100%;animation:eu-mehop .55s ease-out}
 @keyframes eu-mehop{0%{transform:scale(1,1)}18%{transform:scale(1.14,.8)}40%{transform:scale(.92,1.1)}58%{transform:scale(1.05,.95)}76%{transform:scale(.98,1.02)}100%{transform:scale(1,1)}}
-#eu-me .say{position:absolute;left:50%;bottom:100%;margin-bottom:8px;transform:translateX(-50%) scale(.6);opacity:0;white-space:nowrap;background:#3d2a22;color:#fff6e6;border:3px solid #f2d3ae;outline:3px solid #6e5444;border-radius:6px;padding:6px 22px 6px 14px;font:14px/1.5 'Cubic11',"Noto Sans TC",sans-serif;box-shadow:4px 5px 0 3px rgba(110,84,68,.25);transition:transform .2s,opacity .2s;pointer-events:none}
-#eu-me .say::after{content:"\25BC";position:absolute;right:7px;bottom:2px;font-size:9px;color:#f2d3ae;animation:eu-blink 1s steps(2) infinite}
+.eu-wk .say{position:absolute;left:50%;bottom:100%;margin-bottom:8px;transform:translateX(-50%) scale(.6);opacity:0;white-space:nowrap;background:#3d2a22;color:#fff6e6;border:3px solid #f2d3ae;outline:3px solid #6e5444;border-radius:6px;padding:6px 22px 6px 14px;font:14px/1.5 'Cubic11',"Noto Sans TC",sans-serif;box-shadow:4px 5px 0 3px rgba(110,84,68,.25);transition:transform .2s,opacity .2s;pointer-events:none}
+.eu-wk .say::after{content:"\25BC";position:absolute;right:7px;bottom:2px;font-size:9px;color:#f2d3ae;animation:eu-blink 1s steps(2) infinite}
 @keyframes eu-blink{50%{opacity:0}}
-#eu-me .say.heart{padding:6px 24px 6px 18px}
-#eu-me .say img{width:20px;height:auto;display:block}
-#eu-me .say.show{opacity:1;transform:translateX(-50%) scale(1)}
-@media (max-width:600px){#eu-me{width:82px;height:100px}}
-#eu-me.held{cursor:grabbing}
-#eu-me.held .fr{transform-origin:50% 8%;animation:eu-dangle 1.1s ease-in-out infinite}
+.eu-wk .say.heart{padding:6px 24px 6px 18px}
+.eu-wk .say img{width:20px;height:auto;display:block}
+.eu-wk .say.show{opacity:1;transform:translateX(-50%) scale(1)}
+@media (max-width:600px){.eu-wk{width:82px;height:100px}}
+#eu-rin{width:95px;height:135px}
+@media (max-width:600px){#eu-rin{width:73px;height:104px}}
+#eu-rin.held .fr{transform-origin:65% 3%}
+.eu-wk.held{cursor:grabbing}
+.eu-wk.held .fr{transform-origin:50% 8%;animation:eu-dangle 1.1s ease-in-out infinite}
 @keyframes eu-dangle{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}}
-#eu-me.held .bob{animation:none}
+.eu-wk.held .bob{animation:none}
 @font-face{font-family:'Cubic11';src:url('https://euddddd.github.io/portfolio/Cubic_11.woff2') format('woff2');font-display:swap}
 #eu-bg{position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden;
  background-image:radial-gradient(#ead8bb 1.3px,transparent 1.5px);background-size:24px 24px}

@@ -17,6 +17,7 @@ This repository holds the images, music and font used by [Eu's Treasure Trove](h
 | `rin.webp` | 角色「鈴」卡片圖 · Rin character card |
 | `avatar.webp` | 作者頭像 · Author avatar |
 | `me_*.webp` | 網站底部散步的像素小人 · Walking pixel mascot |
+| `rin_*.webp` | 一起散步的小人「鈴」 · Walking mascot Rin |
 | `stk_*.webp` | 標題旁的貼紙 · Title stickers |
 | `bur_*.webp` | 底部跳來跳去的眼球漢堡（分層） · Bouncing eyeball burger mascot (layered) |
 | `ic_*.png` | 網站圖示與背景漂浮小物 · Site icons & floating decorations |

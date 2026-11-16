@@ -80,9 +80,15 @@
    else for(var li=0;li!==LY.length;li++){var k=li===5?1.6:li, wob=li===5?(sp*25*(bvx>0?1:-1)):0;LY[li].style.transform=sp?'translateY('+(-sp*k*ex).toFixed(1)+'px) rotate('+wob.toFixed(1)+'deg)':'';}requestAnimationFrame(btick);}
   requestAnimationFrame(btick);
  }
- if(!document.getElementById('eu-me')){
-  var ME='https://euddddd.github.io/portfolio/me_';
-  var me=document.createElement('div');me.id='eu-me';me.setAttribute('aria-hidden','true');
+ var snapAC=null;
+ function snapFx(){try{snapAC=snapAC||new (window.AudioContext||window.webkitAudioContext)();var c=snapAC,t=c.currentTime+0.05,n=Math.floor(c.sampleRate*0.12),b=c.createBuffer(1,n,c.sampleRate),d=b.getChannelData(0);
+  for(var i=0;i!==n;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/n,6);
+  var src=c.createBufferSource();src.buffer=b;var bp=c.createBiquadFilter();bp.type='bandpass';bp.frequency.value=2600;bp.Q.value=1.6;var g=c.createGain();g.gain.setValueAtTime(0.9,t);g.gain.exponentialRampToValueAtTime(0.001,t+0.12);
+  var o2=c.createOscillator();o2.type='sine';o2.frequency.setValueAtTime(1800,t);o2.frequency.exponentialRampToValueAtTime(900,t+0.05);var g2=c.createGain();g2.gain.setValueAtTime(0.25,t);g2.gain.exponentialRampToValueAtTime(0.001,t+0.06);
+  src.connect(bp);bp.connect(g);g.connect(c.destination);o2.connect(g2);g2.connect(c.destination);src.start(t);o2.start(t);o2.stop(t+0.07);}catch(x){}}
+ function mkWalker(o){if(document.getElementById(o.id))return;
+  var ME='https://euddddd.github.io/portfolio/'+o.pre;
+  var me=document.createElement('div');me.id=o.id;me.className='eu-wk';me.setAttribute('aria-hidden','true');
   var bob=document.createElement('div');bob.className='bob';var fr=document.createElement('div');fr.className='fr';
   var F={};['walk','side','front','wave','sit','up'].forEach(function(k){var im=document.createElement('img');im.src=ME+k+'.webp';im.alt='';im.draggable=false;fr.appendChild(im);F[k]=im;});
   var say=document.createElement('div');say.className='say';
@@ -102,23 +108,23 @@
    tx=Math.random()>0.5?x+d:x-d; if(tx>maxX())tx=maxX()-Math.random()*40; if(0>tx)tx=Math.random()*40;
    me.classList.toggle('flip',x>tx);me.classList.add('walking');
   }
-  var lines={zh:['嗨～歡迎光臨！','慢慢逛喔～','要不要玩章魚燒？','今天也辛苦了～','我在散步～','AI 聊天真的很好玩！'],en:['Hi, welcome!','Take your time~','Try Takoyaki House?','You did great today~','Just taking a stroll~','AI chat is so much fun!']};
+  var lines=o.lines;
   me.addEventListener('click',function(){
    if(noClick){noClick=false;return;}
    var L=document.documentElement.classList.contains('eu-en')?lines.en:lines.zh;
-   say.textContent='';say.classList.remove('heart');var pickI=Math.floor(Math.random()*(L.length+1));if(pickI===L.length){var hh=document.createElement('img');hh.src='https://euddddd.github.io/portfolio/ic_heart.png';hh.alt='♡';say.appendChild(hh);say.classList.add('heart');}else{say.textContent=L[pickI];}say.classList.add('show');
+   say.textContent='';say.classList.remove('heart');var pickI=Math.floor(Math.random()*(L.length+(o.heart?1:0)));if(pickI===L.length){var hh=document.createElement('img');hh.src='https://euddddd.github.io/portfolio/ic_heart.png';hh.alt='♡';say.appendChild(hh);say.classList.add('heart');}else{say.textContent=L[pickI];if(o.snap&&pickI===0)snapFx();}say.classList.add('show');
    me.classList.remove('walking');me.classList.remove('flip');show('wave');mode='talk';
    me.classList.remove('hop');void me.offsetWidth;me.classList.add('hop');
    clearTimeout(busy);busy=setTimeout(function(){say.classList.remove('show');me.classList.remove('hop');mode='idle';show('front');until=performance.now()+1500;},2400);
   });
   var lift=0,vy=0,drag=null,noClick=false;
-  var holdL={zh:['哇啊啊！','放我下來～','好、好高喔！','咦咦咦？！'],en:['Whoa!','Put me down~','So high!','Eek?!']};
+  var holdL=o.hold;
   me.addEventListener('pointerdown',function(e){if(e.button>0)return;var r=me.getBoundingClientRect();drag={sx:e.clientX,sy:e.clientY,ox:e.clientX-r.left,oy:e.clientY-r.top,on:false,id:e.pointerId};});
   window.addEventListener('pointermove',function(e){
    if(!drag||e.pointerId!==drag.id)return;
    if(!drag.on){if(6>Math.abs(e.clientX-drag.sx)+Math.abs(e.clientY-drag.sy))return;drag.on=true;
     try{me.setPointerCapture(e.pointerId);}catch(q){}
-    clearTimeout(busy);me.classList.remove('walking');me.classList.remove('flip');me.classList.remove('hop');me.classList.add('held');show('up');mode='held';drag.ox=me.offsetWidth/2;drag.oy=me.offsetHeight*0.06;
+    clearTimeout(busy);me.classList.remove('walking');me.classList.remove('flip');me.classList.remove('hop');me.classList.add('held');show('up');mode='held';drag.ox=me.offsetWidth*o.ax;drag.oy=me.offsetHeight*o.ay;
     var L=document.documentElement.classList.contains('eu-en')?holdL.en:holdL.zh;say.classList.remove('heart');say.textContent=L[Math.floor(Math.random()*L.length)];say.classList.add('show');}
    var h=me.offsetHeight||130,base=window.innerHeight-h+4;
    x=e.clientX-drag.ox; lift=Math.max(0,base-(e.clientY-drag.oy)); vy=0;
@@ -131,7 +137,7 @@
   function tick(now){
    var dt=last?Math.min(0.1,(now-last)/1000):0;last=now;
    if(mode==='walk'){
-    var sp=(VW()>600?46:34)*dt, dir=tx>x?1:-1;
+    var sp=(VW()>600?46:34)*o.spd*dt, dir=tx>x?1:-1;
     if(sp>=Math.abs(tx-x)){x=tx;me.classList.remove('walking');mode='idle';show('front');until=now+1800+Math.random()*2500;}
     else{x+=dir*sp; if(now>stepT){step=1-step;stepT=now+260;show(step?'walk':'side');}}
    }else if(mode==='fall'){vy+=2600*dt;lift-=vy*dt;if(0>=lift)land();
@@ -144,6 +150,12 @@
   }
   show('front');until=performance.now()+1200;requestAnimationFrame(tick);
  }
+ mkWalker({id:'eu-me',pre:'me_',heart:true,ax:.5,ay:.06,spd:1,
+  lines:{zh:['嗨～歡迎光臨！','慢慢逛喔～','要不要玩章魚燒？','今天也辛苦了～','我在散步～','AI 聊天真的很好玩！'],en:['Hi, welcome!','Take your time~','Try Takoyaki House?','You did great today~','Just taking a stroll~','AI chat is so much fun!']},
+  hold:{zh:['哇啊啊！','放我下來～','好、好高喔！','咦咦咦？！'],en:['Whoa!','Put me down~','So high!','Eek?!']}});
+ mkWalker({id:'eu-rin',pre:'rin_',heart:false,ax:.65,ay:.03,spd:1.12,
+  snap:1,lines:{zh:['你的願望我收下了！','叮鈴～','又來啦？嘿嘿','別忘了我喔','快來找我許願～','神明也是會無聊的嘛','本大神才沒有在等你'],en:['Your wish? Received!','Ring-a-ling~','Back again? Heh','Don\'t forget me','Come make a wish~','Even gods get bored','I wasn\'t waiting for you or anything']},
+  hold:{zh:['喂！放我下來！','我可是神明耶！','……不爽。','你當我是貓喔？'],en:['Hey! Put me down!','I\'m a god, you know!','...Hmph.','Am I a cat to you?']}});
  var a=new Audio();a.loop=true;a.volume=0.2;
  var ready=null,want=false,ok=false,SIL='data:audio/wav;base64,UklGRkQDAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YSADAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgA==';
  function load(){if(ready)return ready;ready=fetch('https://euddddd.github.io/portfolio/bgm.dat').then(function(r){return r.arrayBuffer();}).then(function(buf){
