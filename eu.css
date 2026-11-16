@@ -74,7 +74,9 @@ html:not(.eu-en) .eu .l-en,html.eu-en .eu .l-zh{display:none!important}
 .eu .about{display:grid;grid-template-columns:110px minmax(0,1fr);gap:22px;align-items:center}
 .eu .av{width:110px;height:110px;object-fit:cover;border-radius:50%;border:3px solid var(--line);background:#ffe3c2;box-shadow:3px 4px 0 var(--shadow)}
 .eu .foot{text-align:center;font-size:14px;color:var(--soft);display:flex;flex-direction:column;align-items:center;gap:8px}
-.eu .foot .pill{padding:5px 16px;border:2.5px solid var(--line);border-radius:999px;background:#fff;color:var(--ink)}
+.eu .foot .pill{position:relative;top:0;display:inline-flex;align-items:center;gap:.4em;padding:5px 16px;border:2.5px solid var(--line);border-radius:999px;background:var(--yel);color:var(--ink);font-size:15px;line-height:1.3;box-shadow:2px 3px 0 var(--line);transition:top .12s}
+.eu .foot .pill::before{content:'';width:1.15em;height:1.15em;background:url(https://euddddd.github.io/portfolio/ic_spool.png) center/contain no-repeat}
+.eu .foot .pill:hover{top:-2px}
 @media (max-width:600px){
  .eu .feat,.eu .grid,.eu .about{grid-template-columns:minmax(0,1fr)}
  .eu .about{justify-items:start;text-align:left}
@@ -175,6 +177,10 @@ html.eu-en .eu .crm dl{grid-template-columns:7em minmax(0,1fr)}
 .eu a.card:hover{transform:rotate(var(--r,0deg));top:-3px}
 .eu a.btn:hover,.eu a.card:hover .btn{transform:none;top:-1px}
 .eu .back:hover{transform:none;left:-2px}
+.eu .cp,.eu .cn,.eu .dot{position:relative;top:0;transition:top .12s}
+.eu .cp:not(:disabled):hover,.eu .cn:not(:disabled):hover{top:-2px}
+.eu .dot:hover{top:-1px}
+.eu summary.btn:hover{top:-2px}
 @media (max-width:600px){
  .eu .sl{grid-template-columns:minmax(0,1fr);gap:8px;align-items:start}
  .eu .sl.wide{grid-template-columns:minmax(0,1fr)}
