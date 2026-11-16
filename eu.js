@@ -34,7 +34,7 @@
   var ME='https://euddddd.github.io/portfolio/me_';
   var me=document.createElement('div');me.id='eu-me';me.setAttribute('aria-hidden','true');
   var bob=document.createElement('div');bob.className='bob';var fr=document.createElement('div');fr.className='fr';
-  var F={};['walk','side','front','wave','sit'].forEach(function(k){var im=document.createElement('img');im.src=ME+k+'.webp';im.alt='';im.draggable=false;fr.appendChild(im);F[k]=im;});
+  var F={};['walk','side','front','wave','sit','up'].forEach(function(k){var im=document.createElement('img');im.src=ME+k+'.webp';im.alt='';im.draggable=false;fr.appendChild(im);F[k]=im;});
   var say=document.createElement('div');say.className='say';
   bob.appendChild(fr);me.appendChild(bob);me.appendChild(say);document.body.appendChild(me);
   var cur=null;function show(k){if(cur===k)return;if(cur)F[cur].classList.remove('on');F[k].classList.add('on');cur=k;}
@@ -54,22 +54,42 @@
   }
   var lines={zh:['嗨～歡迎光臨！','慢慢逛喔～','要不要玩章魚燒？','今天也辛苦了～','我在散步～','AI 聊天真的很好玩！'],en:['Hi, welcome!','Take your time~','Try Takoyaki House?','You did great today~','Just taking a stroll~','AI chat is so much fun!']};
   me.addEventListener('click',function(){
+   if(noClick){noClick=false;return;}
    var L=document.documentElement.classList.contains('eu-en')?lines.en:lines.zh;
    say.textContent='';say.classList.remove('heart');var pickI=Math.floor(Math.random()*(L.length+1));if(pickI===L.length){var hh=document.createElement('img');hh.src='https://euddddd.github.io/portfolio/ic_heart.png';hh.alt='♡';say.appendChild(hh);say.classList.add('heart');}else{say.textContent=L[pickI];}say.classList.add('show');
    me.classList.remove('walking');me.classList.remove('flip');show('wave');mode='talk';
    me.classList.remove('hop');void me.offsetWidth;me.classList.add('hop');
    clearTimeout(busy);busy=setTimeout(function(){say.classList.remove('show');me.classList.remove('hop');mode='idle';show('front');until=performance.now()+1500;},2400);
   });
+  var lift=0,vy=0,drag=null,noClick=false;
+  var holdL={zh:['哇啊啊！','放我下來～','好、好高喔！','咦咦咦？！'],en:['Whoa!','Put me down~','So high!','Eek?!']};
+  me.addEventListener('pointerdown',function(e){if(e.button>0)return;var r=me.getBoundingClientRect();drag={sx:e.clientX,sy:e.clientY,ox:e.clientX-r.left,oy:e.clientY-r.top,on:false,id:e.pointerId};});
+  window.addEventListener('pointermove',function(e){
+   if(!drag||e.pointerId!==drag.id)return;
+   if(!drag.on){if(6>Math.abs(e.clientX-drag.sx)+Math.abs(e.clientY-drag.sy))return;drag.on=true;
+    try{me.setPointerCapture(e.pointerId);}catch(q){}
+    clearTimeout(busy);me.classList.remove('walking');me.classList.remove('flip');me.classList.remove('hop');me.classList.add('held');show('up');mode='held';drag.ox=me.offsetWidth/2;drag.oy=me.offsetHeight*0.06;
+    var L=document.documentElement.classList.contains('eu-en')?holdL.en:holdL.zh;say.classList.remove('heart');say.textContent=L[Math.floor(Math.random()*L.length)];say.classList.add('show');}
+   var h=me.offsetHeight||130,base=window.innerHeight-h+4;
+   x=e.clientX-drag.ox; lift=Math.max(0,base-(e.clientY-drag.oy)); vy=0;
+   if(x>maxX())x=maxX(); if(0>x)x=0;
+  });
+  function drop(e){if(!drag||(e&&e.pointerId!==drag.id))return;var was=drag.on;drag=null;if(!was)return;noClick=true;setTimeout(function(){noClick=false;},50);
+   me.classList.remove('held');mode=lift>2?'fall':'land';if(mode==='land')land();}
+  function land(){lift=0;vy=0;say.classList.remove('show');show('front');me.classList.remove('hop');void me.offsetWidth;me.classList.add('hop');mode='idle';until=performance.now()+1800;}
+  window.addEventListener('pointerup',drop);window.addEventListener('pointercancel',drop);
   function tick(now){
    var dt=last?Math.min(0.1,(now-last)/1000):0;last=now;
    if(mode==='walk'){
     var sp=(VW()>600?46:34)*dt, dir=tx>x?1:-1;
     if(sp>=Math.abs(tx-x)){x=tx;me.classList.remove('walking');mode='idle';show('front');until=now+1800+Math.random()*2500;}
     else{x+=dir*sp; if(now>stepT){step=1-step;stepT=now+260;show(step?'walk':'side');}}
+   }else if(mode==='fall'){vy+=2600*dt;lift-=vy*dt;if(0>=lift)land();
+   }else if(mode==='held'){
    }else if(mode!=='talk'&&now>until){pick(now);}
    if(x>maxX())x=maxX(); if(0>x)x=0;
    if(mode==='walk'&&((x>=maxX()&&tx>=x)||(0>=x&&x>=tx))){me.classList.remove('walking');mode='idle';show('front');until=now+1500;}
-   me.style.transform='translateX('+x.toFixed(1)+'px)';
+   me.style.transform='translate('+x.toFixed(1)+'px,'+(-lift).toFixed(1)+'px)';
    requestAnimationFrame(tick);
   }
   show('front');until=performance.now()+1200;requestAnimationFrame(tick);
