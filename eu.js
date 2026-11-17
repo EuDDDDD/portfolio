@@ -16,7 +16,7 @@
  function carUp(c){
   var t=c.querySelector('.trk'),d=c.querySelectorAll('.dot');if(!t||!t.clientWidth)return;
   var i=Math.round(t.scrollLeft/t.clientWidth);
-  var sl=t.children[i];if(sl)t.style.height=sl.offsetHeight+'px';
+  var sl=t.children[i];if(sl)t.style.height=sl.offsetHeight+'px';if(t.scrollTop)t.scrollTop=0;
   for(var k=0;k!==d.length;k++)d[k].classList.toggle('on',k===i);
   var pv=c.querySelector('.cp'),nx=c.querySelector('.cn');
   if(pv)pv.disabled=(i===0);if(nx)nx.disabled=(i>=d.length-1);

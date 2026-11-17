@@ -138,7 +138,7 @@ html.eu-seen .eu .ttl .dd{animation:eu-bob 3.2s ease-in-out infinite}
 .eu .ft b{display:block;margin:8px 2px 0;font-size:16px;color:var(--head);line-height:1.35}
 .eu .ft small{display:block;margin:2px 2px 0;font-size:13px;line-height:1.55}
 .eu .car{padding:14px 14px 12px}
-.eu .trk{align-items:flex-start;transition:height .3s ease;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.eu .trk{overflow-y:hidden!important;overscroll-behavior-y:auto;touch-action:pan-x pan-y;align-items:flex-start;transition:height .3s ease;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
 .eu .trk::-webkit-scrollbar{display:none}
 .eu .sl{flex:0 0 100%;min-width:0;scroll-snap-align:start;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:18px;align-items:center;padding:2px}
 .eu .sl img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:14px;border:2.5px solid var(--line);background:#3a2418}
