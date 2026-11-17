@@ -16,6 +16,7 @@
  function carUp(c){
   var t=c.querySelector('.trk'),d=c.querySelectorAll('.dot');if(!t||!t.clientWidth)return;
   var i=Math.round(t.scrollLeft/t.clientWidth);
+  var sl=t.children[i];if(sl)t.style.height=sl.offsetHeight+'px';
   for(var k=0;k!==d.length;k++)d[k].classList.toggle('on',k===i);
   var pv=c.querySelector('.cp'),nx=c.querySelector('.cn');
   if(pv)pv.disabled=(i===0);if(nx)nx.disabled=(i>=d.length-1);
@@ -29,7 +30,11 @@
  document.addEventListener('scroll',function(e){
   var t=e.target;if(t&&t.classList&&t.classList.contains('trk')){var c=t.closest('.car');if(c)carUp(c);}
  },true);
- window.addEventListener('resize',function(){var cs=document.querySelectorAll('.eu .car');for(var k=0;k!==cs.length;k++){var t=cs[k].querySelector('.trk'),on=cs[k].querySelector('.dot.on');if(t&&on)t.scrollLeft=(+on.getAttribute('data-i'))*t.clientWidth;}});
+ function carAll(){var cs=document.querySelectorAll('.eu .car');for(var k=0;k!==cs.length;k++)carUp(cs[k]);}
+ window.addEventListener('load',carAll);setTimeout(carAll,600);setTimeout(carAll,2000);
+ document.addEventListener('load',function(e){if(e.target&&e.target.closest&&e.target.closest('.car'))carAll();},true);
+ window.addEventListener('hashchange',function(){setTimeout(carAll,50);});
+ window.addEventListener('resize',function(){setTimeout(carAll,60);var cs=document.querySelectorAll('.eu .car');for(var k=0;k!==cs.length;k++){var t=cs[k].querySelector('.trk'),on=cs[k].querySelector('.dot.on');if(t&&on)t.scrollLeft=(+on.getAttribute('data-i'))*t.clientWidth;}});
  if(!document.getElementById('eu-bg')){
   var bg=document.createElement('div');bg.id='eu-bg';bg.setAttribute('aria-hidden','true');
   var P='https://euddddd.github.io/portfolio/ic_';
