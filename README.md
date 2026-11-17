@@ -22,7 +22,7 @@ This repository holds the images, music and font used by [Eu's Treasure Trove](h
 | `emo_*.webp` | 小人被拎起來時的表情符號 · Mascot emotes when picked up |
 | `ic_keyboard.webp`、`ic_phone.webp` | 操作說明的鍵盤／手機圖示 · Keyboard / phone icons for controls |
 | `bur_*.webp` | 底部跳來跳去的眼球漢堡（分層） · Bouncing eyeball burger mascot (layered) |
-| `tk_*.webp` | 章魚燒屋介紹頁的遊戲畫面 · Takoyaki House intro screenshots |
+| `intro/takoyaki/` | 章魚燒屋介紹頁的圖片 · Takoyaki House intro images |
 | `emo_*.webp` | 小人被拎起來時的表情符號 · Mascot emotes when picked up |
 | `ic_keyboard.webp`、`ic_phone.webp` | 操作說明的鍵盤／手機圖示 · Keyboard / phone icons for controls |
 | `ic_*.png` | 網站圖示與背景漂浮小物 · Site icons & floating decorations |
