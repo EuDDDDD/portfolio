@@ -331,3 +331,12 @@ a,button,summary,.btn,.eu a,.eu button,.eu summary,.eu .dot,.eu .cp,.eu .cn,#eu-
 .eu .cp:disabled,.eu .cn:disabled{cursor:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAArklEQVR42mP0M1D6z4AFbLpwj5GBDoCJYYABC4yxYl4dikREUtN/eoTI4AkBdIArRKgdEgMeAnDfwHIDzOdN/7FruJbcRNU0MfjSAC6fw4DWXGjaSKZOmhg8aQA9LcB9SgBQmiYGXwjQOyQGbwjQKyQGfwgQGxINJ7lQ+GGzKogKicFbG+JsIUFLQFhIoPt8+JQDxKaJVWkdZMX90A8B9JAgt+044CEwCkbBKBgFANVET9lvPyIGAAAAAElFTkSuQmCC) 0 0,default!important}
 .eu-wk,#eu-bur{cursor:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAiElEQVR42mNgGAWjYKQDRlwSfgZK/5H5my7cYyRHnBBgGnQhAPPJxp1bUMT93X0YyBEnFBIDHgKjDmChl0W4csnQCQH0VE5IHFeuguWO4Z8GCIXMyMsFuEpGpkFfGxIbl6T6fPCHAK4SjFQw6GtDonPBqrQOkgwOm1UxzMoBYn005NoDo2AUAABAezrZfujIPwAAAABJRU5ErkJggg==) 16 16,grab!important}
 .eu-wk.held,#eu-bur.held,html.eu-grab,html.eu-grab *{cursor:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAjElEQVR42mNgGAWjYBSMdMCILuBnoPSfmhZsunCPEZ8806AJAZjPN+7cgqLA392HgRxxYkNiwEOAZg7YuHMLRugMyhBgQRfAFYekig94FJAcArBUiis3DLlEOOoAsnMBLC34u/vQJS0wDbrakNq146CvDVmIVbgqrYMkg8NmVQzRXECpj4ZcLhgFowAAFzIs+Gs1m2QAAAAASUVORK5CYII=) 16 16,grabbing!important}
+
+/* page scrollbar: thin cream-and-milk-tea bar, no arrow buttons (2026-11-19) */
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:#fbf3e4}
+::-webkit-scrollbar-thumb{background:#e7c9a3;border:2px solid #fbf3e4;border-radius:999px}
+::-webkit-scrollbar-thumb:hover{background:#d4ab80}
+::-webkit-scrollbar-button{display:none;width:0;height:0}
+::-webkit-scrollbar-corner{background:#fbf3e4}
+@supports not selector(::-webkit-scrollbar){html{scrollbar-width:thin;scrollbar-color:#e7c9a3 #fbf3e4}}
