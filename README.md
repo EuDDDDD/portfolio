@@ -23,12 +23,10 @@ This repository holds the images, music and font used by [Eu's Treasure Trove](h
 | `ic_keyboard.webp`、`ic_phone.webp` | 操作說明的鍵盤／手機圖示 · Keyboard / phone icons for controls |
 | `bur_*.webp` | 底部跳來跳去的眼球漢堡（分層） · Bouncing eyeball burger mascot (layered) |
 | `verlen_pocket.webp` | 小遊戲頁「維倫祕密市民・口袋版」卡片圖 · Pocket edition card image |
-| `intro/takoyaki/` | 章魚燒屋介紹頁的圖片 · Takoyaki House intro images |
+| `intro/takoyaki/` | 章魚燒屋介紹頁的圖片與遊玩影片 `tk_intro.mp4` · Takoyaki House intro images and gameplay video |
 | `intro/verlen/` | 口袋版介紹頁的圖片 · Pocket edition intro images |
-| `emo_*.webp` | 小人被拎起來時的表情符號 · Mascot emotes when picked up |
-| `ic_keyboard.webp`、`ic_phone.webp` | 操作說明的鍵盤／手機圖示 · Keyboard / phone icons for controls |
-| `ic_*.png` | 網站圖示與背景漂浮小物 · Site icons & floating decorations |
-| `eu.css`, `eu.js` | 網站共用樣式與程式（背景、音樂、小人、語言切換） · Shared site style & script |
+| `ic_*.png` | 網站圖示與背景漂浮小物（含「先看看」的放大鏡 `ic_peek.png`） · Site icons & floating decorations (incl. the Peek magnifier) |
+| `eu.css`, `eu.js` | 網站共用樣式與程式（背景、音樂、小人、語言切換、捲軸） · Shared site style & script |
 | `bgm.dat` | 網站背景音樂（已編碼，僅供網站播放） · Background music (encoded, for on-site playback only) |
 | `Cubic_11.woff2` | 網站字型 · Site font |
 | `Cubic11_OFL.txt` | 字型授權條款 · Font license |
