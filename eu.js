@@ -191,7 +191,7 @@
   a.src=URL.createObjectURL(new Blob([o],{type:'audio/mpeg'}));ok=true;
   if(want){want=false;go();}
  });return ready;}
- function go(){if(!ok){want=true;try{a.src=SIL;var q=a.play();if(q&&q.catch)q.catch(function(){});}catch(x){}load();return;}a.play().then(function(){set(true);}).catch(function(){set(false);});}
+ function go(){if(vidOn()){held=true;want=false;return;}if(!ok){want=true;try{a.src=SIL;var q=a.play();if(q&&q.catch)q.catch(function(){});}catch(x){}load();return;}a.play().then(function(){set(true);}).catch(function(){set(false);});}
  setTimeout(load,1500);
  var tp=document.createElement('button');tp.id='eu-top';tp.type='button';tp.setAttribute('aria-label','回到頂端 Back to top');tp.title='TOP';document.body.appendChild(tp);
  tp.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
@@ -227,5 +227,15 @@
  }
  document.addEventListener('pointerdown',kick,true);
  document.addEventListener('keydown',kick,true);
+ /* any video on the page with its sound on: the music steps aside while it plays and comes back after */
+ var held=false;
+ function loud(v){return v&&v.tagName==='VIDEO'&&!v.muted&&!v.paused&&!v.ended;}
+ function vidOn(){var vs=document.querySelectorAll('video');for(var i=0;i!==vs.length;i++){if(loud(vs[i]))return true;}return false;}
+ function vidPlay(e){if(!loud(e.target))return;if(!a.paused||want){held=true;want=false;a.pause();}}
+ function vidStop(e){if(!e.target||e.target.tagName!=='VIDEO')return;setTimeout(function(){if(held&&!vidOn()){held=false;go();}},150);}
+ document.addEventListener('play',vidPlay,true);
+ document.addEventListener('pause',vidStop,true);
+ document.addEventListener('ended',vidStop,true);
+ document.addEventListener('volumechange',function(e){if(loud(e.target))vidPlay(e);else vidStop(e);},true);
  document.body.appendChild(b);
 })();
