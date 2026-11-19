@@ -213,10 +213,12 @@
  });
  var away=false;
  a.addEventListener('pause',function(){if(!away)set(false);});
- document.addEventListener('visibilitychange',function(){
-  if(document.hidden){if(!a.paused){away=true;a.pause();}}
-  else if(away){away=false;go();}
- });
+ /* leaving the page pauses the music: another tab, a minimized window, or clicking into another window or app; coming back resumes it, unless the visitor had paused it themselves */
+ function leave(){if(!a.paused){away=true;a.pause();}}
+ function back(){if(away&&!document.hidden&&document.hasFocus()){away=false;go();}}
+ document.addEventListener('visibilitychange',function(){if(document.hidden)leave();else back();});
+ window.addEventListener('blur',leave);
+ window.addEventListener('focus',back);
  var first=true;
  function kick(e){
   if(!first)return; first=false;
